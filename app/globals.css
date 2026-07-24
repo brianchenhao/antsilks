@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #06080b;
+  --color-bg-soft: #0a0e13;
+  --color-panel: #0d1218;
+  --color-panel-2: #11171f;
+  --color-line: #1c242e;
+  --color-fg: #e8edf3;
+  --color-mute: #8493a3;
+  --color-faint: #5a6675;
+  --color-accent: #6ef7c0;
+  --color-accent-dim: #2f7c5f;
+  --color-cyan: #46dbff;
+  --color-danger: #ff5c7a;
+  --color-warn: #ffcf6b;
+
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-blink: blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes aurora {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes scan {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(2000%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes row-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+    background-color: color-mix(in oklab, var(--color-accent) 12%, transparent);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: transparent;
+  }
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+code,
+pre,
+kbd,
+.mono {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-accent) 35%, transparent);
+  color: #fff;
+}
+
+/* ---- reusable bits ---- */
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-line) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-line) 55%, transparent) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  animation: aurora 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.card {
+  background: color-mix(in oklab, var(--color-panel) 92%, transparent);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+}
+
+.text-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--color-fg) 0%,
+    var(--color-accent) 50%,
+    var(--color-cyan) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.reveal {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: #04120c;
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-accent) 60%, transparent),
+    0 12px 40px -12px color-mix(in oklab, var(--color-accent) 70%, transparent);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn-accent:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  border: 1px solid var(--color-line);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.btn-ghost:hover {
+  background: color-mix(in oklab, var(--color-fg) 6%, transparent);
+  border-color: color-mix(in oklab, var(--color-accent) 40%, transparent);
+}
+
+.hairline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--color-accent) 55%, transparent),
+    transparent
+  );
+}
