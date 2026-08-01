@@ -188,6 +188,19 @@ kbd,
   transform: translateY(-1px);
 }
 
+.btn-dark-blue {
+  background: #1e3a8a;
+  color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4),
+    0 12px 40px -12px rgba(30, 58, 138, 0.6);
+  transition: transform 0.15s ease, filter 0.15s ease, background-color 0.15s ease;
+}
+.btn-dark-blue:hover {
+  background: #1d4ed8;
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
 .btn-ghost {
   border: 1px solid var(--color-line);
   transition: background 0.15s ease, border-color 0.15s ease;

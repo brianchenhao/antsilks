@@ -51,7 +51,7 @@ export default function Hero({ stats }: { stats: Stats }) {
 
         <Link
           href="#how"
-          className="btn-accent inline-flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold"
+          className="btn-dark-blue inline-flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold"
         >
           See how it works
           <ArrowRight size={16} />
